@@ -15,6 +15,23 @@ task :help do
   "
 end
 
+desc "init basic app directory"
+task :init do 
+  puts "add model foler"
+  ruby "-C. tools/init_project.rb #{site_path}"
+end
+
+desc "add pages foler just like rake g page page_name"
+#command like  rake page_add[my_page] "
+task :page_add, [:page_name] do |t, args|
+  page_name = args[:page_name]
+  puts "gen new page folder: #{page_name}, #{args}"
+  puts "update app/app.core.scss of page"
+  puts "you should import your page from app.ts manually"
+  ruby "-C. tools/gen_view.rb #{site_path} #{page_name}"
+end
+
+
 desc "add all module data like  rake module_add[my_module] "
 task :module_add, [:module_name] do |t, args|
   module_name = args[:module_name]
@@ -34,10 +51,4 @@ task :controller_add, [:controller_name] do |t, args|
 end
 
 
-desc "add pages foler just like rake g page page_name"
-#command like  rake page_add[my_page] "
-task :page_add, [:page_name] do |t, args|
-  page_name = args[:page_name]
-  puts "gen new page folder: #{page_name}, #{args}"
-  ruby "-C. tools/gen_view.rb #{site_path} #{page_name}"
-end
+
