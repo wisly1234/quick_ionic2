@@ -17,7 +17,8 @@ end
 
 desc "init basic app directory"
 task :init do 
-  puts "add model foler"
+  puts "add models foler"
+  puts "add providers foler"  
   ruby "-C. tools/init_project.rb #{site_path}"
 end
 
@@ -30,6 +31,18 @@ task :page_add, [:page_name] do |t, args|
   puts "you should import your page from app.ts manually"
   ruby "-C. tools/gen_view.rb #{site_path} #{page_name}"
 end
+
+#command like: ionic g provider github-users
+desc "add pages foler just like rake g page page_name"
+#command like  rake page_add[my_page] "
+task :provider_add, [:provider_name] do |t, args|
+  provider_name = args[:provider_name]
+  puts "gen new page folder: #{provider_name}, #{args}"
+  puts "update app/app.core.scss of page"
+  puts "you should import your page from app.ts manually"
+  ruby "-C. tools/gen_view.rb #{site_path} #{provider_name}"
+end
+
 
 
 desc "add all module data like  rake module_add[my_module] "
