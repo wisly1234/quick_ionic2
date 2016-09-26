@@ -5,27 +5,33 @@ require_relative 'table_help'
 puts "check args:#{ARGV}"
 
 folder, view_name, controller_name = ARGV
-
-VIEW_TEMEPLATE="
-<ion-view view-title=\"\" class=\"\">
-  <ion-content class=\"\">
-    <h2>this is page #{view_name}</h2>
-  </ion-content>
-</ion-view>
-"  
-save_str(VIEW_TEMEPLATE, "#{folder}/templates/app/#{view_name}.html")
-save_str(VIEW_TEMEPLATE, "#{folder}/templates/wap/#{view_name}.html")
-
+view_names = view_name.split("-")
+class_name = ""
+view_names.each do |sub_view|
+	class_name = "#{class_name}#{sub_view.capitalize}"
+end
+class_name = "#{class_name}Page"
+final_folder = "#{folder}/#{view_name}"
+template_folder = "templates/pages"
+Dir.mkdir("#{final_folder}") unless  (File.exist?("#{final_folder}"))
 
 
-# controllers_str="var g_controller = angular.module('starter.views', []);\n"
-controller_name ||= view_name
+template = read_file("#{template_folder}/page.html")
+template = template.gsub("ViewName", "#{view_name}")
+template = template.gsub("ClassName", "#{class_name}")
+save_str(template, "#{final_folder}/#{view_name}.html")
 
-views = read_to_hash("#{folder}/config/views.json")
-views ||= []
-views << {"name" => view_name, "controller" => controller_name}
+template = read_file("#{template_folder}/page.scss")
+template = template.gsub("ViewName", "#{view_name}")
+template = template.gsub("ClassName", "#{class_name}")
+save_str(template, "#{final_folder}/#{view_name}.scss")
 
-save_to_json(views, "#{folder}/config/views.json")
+template = read_file("#{template_folder}/page.ts")
+template = template.gsub("ViewName", "#{view_name}")
+template = template.gsub("ClassName", "#{class_name}")
+save_str(template, "#{final_folder}/#{view_name}.ts")
+
+
 
 
 puts "Don't forget to add an import for #{view_name}.scss in app/themes/app.core.scss:

@@ -77,6 +77,10 @@ def read_to_hash(file_name)
   JSON.parse(IO.read("#{file_name}"))
 end
 
+def read_file(file_name)
+  IO.read("#{file_name}")
+end
+
 def remove_config(file_name)
   File.delete("game-config/#{file_name}.json")
 end
