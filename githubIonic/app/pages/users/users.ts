@@ -7,6 +7,10 @@ import {GithubUsers} from '../../providers/github-users/github-users';
 // Import User model
 import {User} from '../../models/user';
 
+// Import User's Details Page
+import {UserDetailsPage} from '../user-details/user-details';
+
+
 /*
   Generated class for the UsersPage page.
 
@@ -39,6 +43,13 @@ export class UsersPage {
     	this.users = users;
       });
       */
+  }
+
+  // Navigate to user details page with the login as a parameter  
+  goToDetails(event, login) {
+    this.nav.push(UserDetailsPage, {
+      login: login
+    });
   }
 
 }

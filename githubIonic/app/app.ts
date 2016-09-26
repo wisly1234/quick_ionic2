@@ -9,6 +9,11 @@ import {ReposPage} from './pages/repos/repos';
 import {OrganizationsPage} from './pages/organizations/organizations';
 
 
+import { UserDetailsPage } from './pages/user-details/user-details'; 
+
+//AppFlag  -- added by wisly. DO NEVER Change this line 
+
+
 @Component({
   templateUrl: 'build/app.html'
 })

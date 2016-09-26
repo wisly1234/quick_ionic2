@@ -1,4 +1,4 @@
-def site_path; "~/workspace/quick_ionic2/tabs/app" end
+def site_path; "~/workspace/quick_ionic2/githubionic/app" end
 
 desc "show help"
 task :help do 
