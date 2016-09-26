@@ -1,4 +1,4 @@
-def site_path; "~/workspace/quick_ionic2/tabs/githubionic/app" end
+def site_path; "~/workspace/quick_ionic2/tabs/app" end
 
 desc "show help"
 task :help do 
@@ -16,19 +16,15 @@ task :help do
 end
 
 desc "init basic app directory"
-task :init do 
-  puts "add models foler"
-  puts "add providers foler"  
+task :init do   
   ruby "-C. tools/init_project.rb #{site_path}"
 end
 
 desc "add pages foler just like rake g page page_name"
-#command like  rake page_add[my_page] "
+#command like  rake page_add[my-page-name] "
 task :page_add, [:page_name] do |t, args|
   page_name = args[:page_name]
   puts "gen new page folder: #{page_name}, #{args}"
-  puts "update app/app.core.scss of page"
-  puts "you should import your page from app.ts manually"
   ruby "-C. tools/gen_view.rb #{site_path} #{page_name}"
 end
 
