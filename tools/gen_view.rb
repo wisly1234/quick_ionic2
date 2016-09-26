@@ -34,12 +34,12 @@ save_str(template, "#{final_folder}/#{view_name}.ts")
 
 template = read_file("#{folder}/app.ts")
 # puts "check template:#{template}"
-template = template.gsub("//AppFlag", "import { #{class_name} } from './pages/#{view_name}/#{view_name}'; \n\n\n//AppFlag")
+template = template.gsub("//AppFlag", "import { #{class_name} } from './pages/#{view_name}/#{view_name}'; \n\n//AppFlag")
 save_str(template, "#{folder}/app.ts")
 
 
 template = read_file("#{folder}/theme/app.core.scss")
-template += template.gsub("//AppFlag","@import \"../pages/#{view_name}/#{view_name}\"; \n//AppFlag")
+template = template.gsub("//AppFlag","@import \"../pages/#{view_name}/#{view_name}\"; \n\n//AppFlag")
 save_str(template, "#{folder}/theme/app.core.scss")
 
 
