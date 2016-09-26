@@ -18,7 +18,7 @@ puts "add template flag at #{folder}/theme/app.core.scss"
 
 
 template = read_file("#{folder}/app.ts")
-puts "check template:#{template}"
+# puts "check template:#{template}"
 template = template.gsub("@Component", "//AppFlag  -- added by wisly. DO NEVER Change this line \n\n\n@Component")
 save_str(template, "#{folder}/app.ts")
 

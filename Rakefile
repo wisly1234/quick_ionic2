@@ -20,7 +20,7 @@ task :init do
   ruby "-C. tools/init_project.rb #{site_path}"
 end
 
-desc "add pages foler just like rake g page page_name"
+desc "add pages foler just like rake g page page-name"
 #command like  rake page_add[my-page-name] "
 task :page_add, [:page_name] do |t, args|
   page_name = args[:page_name]

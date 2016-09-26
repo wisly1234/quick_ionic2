@@ -131,6 +131,7 @@ end
 
 
 def save_str(str, file)
+  puts "Final Updated File: #{file}"
   File.open("#{file}", 'w') do |f|
     f.write(str)
   end
