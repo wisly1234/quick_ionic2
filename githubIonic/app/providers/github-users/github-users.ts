@@ -35,6 +35,12 @@ export class GithubUsers {
         .subscribe(users => {
           // we've got back the raw users, now generate the core schedule users
           // and save the users for later reference
+
+            // for (var i =0; i< users.length; i++)
+            // {
+            //      console.log(users[i].tostring())
+            // }
+
           this.githubUsers = users;
           resolve(this.githubUsers);
         });

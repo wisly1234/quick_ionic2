@@ -30,4 +30,10 @@ export class User {
   following: number;
   created_at: string;
   updated_at: string;
+
+  tostring()
+  {
+    return "ID:"+this.id + ",name:"+this.name;
+  }
+
 }
