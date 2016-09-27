@@ -11,7 +11,7 @@ view_names.each do |sub_view|
 	class_name = "#{class_name}#{sub_view.capitalize}"
 end
 class_name = "#{class_name}Page"
-final_folder = "#{folder}/#{view_name}"
+final_folder = "#{folder}/pages/#{view_name}"
 template_folder = "templates/pages"
 Dir.mkdir("#{final_folder}") unless  (File.exist?("#{final_folder}"))
 

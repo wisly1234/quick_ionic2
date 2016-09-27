@@ -47,6 +47,7 @@ export class UsersPage {
 
   // Navigate to user details page with the login as a parameter  
   goToDetails(event, login) {
+    console.log("check login to detail:"+login)
     this.nav.push(UserDetailsPage, {
       login: login
     });

@@ -19,7 +19,7 @@ export class GithubUsers {
   
   constructor(public http: Http) {}
 
- load() {
+  load() {
     if (this.githubUsers) {
       // already loaded users
       return Promise.resolve(this.githubUsers);
@@ -43,6 +43,22 @@ export class GithubUsers {
 
           this.githubUsers = users;
           resolve(this.githubUsers);
+        });
+    });
+  }
+
+
+  // Get user details from the github api  
+  loadDetails(login: string) {
+    // get the data from the api and return it as a promise
+    console.log("providers github users get:"+login)
+    return new Promise<User>(resolve => {
+      // Change the url to match https://api.github.com/users/{username}
+      this.http.get('https://api.github.com/users/'+login)
+        .map(res => <User>(res.json()))
+        .subscribe(user => {
+          console.log("check final user:"+user);
+          resolve(user);
         });
     });
   }
